@@ -7,6 +7,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
+import { TimePicker } from "@material-ui/pickers";
 import { TODO_PRIORITY } from "../../constants/todos";
 
 const useStyles = makeStyles(theme => ({
@@ -17,7 +18,8 @@ const useStyles = makeStyles(theme => ({
 
 const defaultTodoItem = {
   priority: TODO_PRIORITY.NORMAL,
-  text: ""
+  text: "",
+  dueTime: null
 };
 
 const AddTodo = ({ onItemAdded }) => {
@@ -81,6 +83,17 @@ const AddTodo = ({ onItemAdded }) => {
               onChange={handleChange}
             />
           </FormControl>
+        </Grid>
+        <Grid item>
+          <TimePicker
+            clearable
+            label="Due time"
+            ampm={false}
+            value={values.dueTime}
+            onChange={dueTime =>
+              setValues(oldValues => ({ ...oldValues, dueTime }))
+            }
+          />
         </Grid>
         <Grid item>
           <Button variant="contained" color="primary" type="submit">

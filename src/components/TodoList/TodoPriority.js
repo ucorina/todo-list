@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   priority: ({ value }) => ({
     display: "block",
     width: "0.7em",
-    height: "1.5em",
+    height: "2em",
     backgroundColor: PRIORITY_COLOR[value],
     marginRight: theme.spacing(1)
   })

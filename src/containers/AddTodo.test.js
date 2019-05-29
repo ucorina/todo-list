@@ -23,6 +23,6 @@ describe("AddTodo", () => {
     wrapper.simulate("itemAdded", todo);
 
     const actions = store.getActions();
-    expect(actions).toEqual([{ type: "ADD_TODO", ...todo }]);
+    expect(actions).toEqual([{ type: "ADD_TODO", item: todo }]);
   });
 });

@@ -7,21 +7,19 @@ describe("todos reducer", () => {
   });
 
   it("should handle ADD_TODO", () => {
-    expect(
-      todos([], { type: ADD_TODO, text: "Do the assigment", priority: 1 })
-    ).toEqual([
+    const item = { text: "Do the assigment", priority: 1 };
+    expect(todos([], { type: ADD_TODO, item })).toEqual([
       {
-        text: "Do the assigment",
+        ...item,
         completed: false,
-        priority: 1,
         id: 1
       }
     ]);
   });
 
   it("should increment the ids when adding todos", () => {
-    const step1 = todos([], { type: ADD_TODO, text: "A" });
-    const step2 = todos(step1, { type: ADD_TODO, text: "B" });
+    const step1 = todos([], { type: ADD_TODO, item: { text: "A" } });
+    const step2 = todos(step1, { type: ADD_TODO, item: { text: "B" } });
 
     expect(step1[0].id + 1).toEqual(step2[1].id);
   });

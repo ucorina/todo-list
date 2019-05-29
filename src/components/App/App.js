@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 function App() {
   const classes = useStyles();
   return (
-    <Container maxWidth="sm" className={classes.title}>
+    <Container maxWidth="md" className={classes.title}>
       <CssBaseline />
       <main>
         <Typography

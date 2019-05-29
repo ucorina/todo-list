@@ -7,9 +7,8 @@ const todos = (state = [], action) => {
       return [
         ...state,
         {
+          ...action.item,
           id: ++nextId,
-          text: action.text,
-          priority: action.priority,
           completed: false
         }
       ];
