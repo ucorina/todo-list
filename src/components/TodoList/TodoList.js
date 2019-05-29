@@ -8,8 +8,12 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
+import TodoPriority from "./TodoPriority";
 
 const useStyles = makeStyles(theme => ({
+  checkboxIcon: {
+    minWidth: "auto"
+  },
   todoItemCompleted: {
     textDecoration: "line-through"
   }
@@ -26,7 +30,7 @@ const TodoList = ({ todoItems, onItemToggled, onItemDeleted }) => {
           button
           onClick={() => onItemToggled(todo.id)}
         >
-          <ListItemIcon>
+          <ListItemIcon className={classes.checkboxIcon}>
             <Checkbox
               edge="start"
               checked={todo.completed}
@@ -34,6 +38,7 @@ const TodoList = ({ todoItems, onItemToggled, onItemDeleted }) => {
               disableRipple
             />
           </ListItemIcon>
+          <TodoPriority value={todo.priority} />
           <ListItemText
             primary={todo.text}
             className={todo.completed ? classes.todoItemCompleted : null}

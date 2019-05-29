@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
+import { TODO_PRIORITY } from "../../constants/todos";
 
 const useStyles = makeStyles(theme => ({
   grid: {
@@ -11,20 +15,32 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const defaultTodoItem = {
+  priority: TODO_PRIORITY.NORMAL,
+  text: ""
+};
+
 const AddTodo = ({ onItemAdded }) => {
   const classes = useStyles();
-  let input;
+  const [values, setValues] = useState(defaultTodoItem);
+  const handleChange = event => {
+    const property = event.target.name;
+    const value = event.target.value;
+    setValues(oldValues => ({
+      ...oldValues,
+      [property]: value
+    }));
+  };
 
   return (
     <form
       onSubmit={e => {
         e.preventDefault();
-        console.log(input);
-        if (!input.value.trim()) {
+        if (!values.text.trim()) {
           return;
         }
-        onItemAdded({ text: input.value });
-        input.value = "";
+        onItemAdded(values);
+        setValues(() => defaultTodoItem);
       }}
     >
       <Grid
@@ -37,16 +53,37 @@ const AddTodo = ({ onItemAdded }) => {
         className={classes.grid}
       >
         <Grid item>
-          <TextField
-            label="what do you want to do?"
-            fullWidth
-            inputRef={node => {
-              input = node;
-            }}
-          />
+          <FormControl>
+            <InputLabel htmlFor="todo-item-priority">Priority</InputLabel>
+            <Select
+              value={values.priority}
+              onChange={handleChange}
+              inputProps={{
+                name: "priority",
+                id: "todo-item-priority"
+              }}
+            >
+              <MenuItem value={TODO_PRIORITY.HIGH}>High</MenuItem>
+              <MenuItem value={TODO_PRIORITY.NORMAL}>Normal</MenuItem>
+              <MenuItem value={TODO_PRIORITY.LOW}>Low</MenuItem>
+            </Select>
+          </FormControl>
         </Grid>
         <Grid item>
-          <Button variant="contained" color="primary">
+          <FormControl>
+            <TextField
+              value={values.text}
+              inputProps={{
+                name: "text",
+                id: "todo-item-text"
+              }}
+              label="What do you want to do?"
+              onChange={handleChange}
+            />
+          </FormControl>
+        </Grid>
+        <Grid item>
+          <Button variant="contained" color="primary" type="submit">
             Add Todo
           </Button>
         </Grid>

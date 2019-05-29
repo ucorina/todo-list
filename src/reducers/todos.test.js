@@ -7,10 +7,13 @@ describe("todos reducer", () => {
   });
 
   it("should handle ADD_TODO", () => {
-    expect(todos([], { type: ADD_TODO, text: "Do the assigment" })).toEqual([
+    expect(
+      todos([], { type: ADD_TODO, text: "Do the assigment", priority: 1 })
+    ).toEqual([
       {
         text: "Do the assigment",
         completed: false,
+        priority: 1,
         id: 1
       }
     ]);

@@ -33,7 +33,7 @@ Don't invest too much on a beautiful visual because in real-life at Chama it wou
 But put energy on using good HTML and CSS, it can be vanilla or pre-processed.
 
 ### Must have
-- [ ] Assign priority to a TO-DO and sort them by **highest to lowest priority**;
+- [x] Assign priority to a TO-DO and sort them by **highest to lowest priority**;
 - [ ] Set a due time. Add real-time visual and auditive hints to the TO-DO item that indicate that the due time is near and has passed;
 - [ ] Nice usability;
 - [ ] Nice stylesheet and a nice layout out of it;
