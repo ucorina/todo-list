@@ -8,9 +8,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
-import TodoPriority from "./TodoPriority";
 import Container from "@material-ui/core/Container";
 import { formatRelative } from "date-fns";
+import TodoPriority from "./TodoPriority";
+import TodoDueTime from "./TodoDueTime";
 
 const useStyles = makeStyles(theme => ({
   checkboxIcon: {
@@ -52,6 +53,8 @@ const TodoList = ({ todoItems, onItemToggled, onItemDeleted }) => {
                 className: todo.completed ? classes.todoItemCompleted : null
               }}
             />
+
+            <TodoDueTime {...todo} />
             <ListItemSecondaryAction>
               <IconButton
                 edge="end"

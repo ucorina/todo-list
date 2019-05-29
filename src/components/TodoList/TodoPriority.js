@@ -9,6 +9,12 @@ const PRIORITY_COLOR = {
   [TODO_PRIORITY.LOW]: "yellow"
 };
 
+const PRIORITY_TITLE = {
+  [TODO_PRIORITY.HIGH]: "High priority",
+  [TODO_PRIORITY.NORMAL]: "Normal priority",
+  [TODO_PRIORITY.LOW]: "Low priority"
+};
+
 const useStyles = makeStyles(theme => ({
   priority: ({ value }) => ({
     display: "block",
@@ -25,6 +31,7 @@ const TodoPriority = ({ value }) => {
     <div
       className={classes.priority}
       style={{ backgroundColor: PRIORITY_COLOR[value] }}
+      title={PRIORITY_TITLE[value]}
     />
   );
 };
