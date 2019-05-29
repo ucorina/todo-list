@@ -1,15 +1,55 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import ListItemText from "@material-ui/core/ListItemText";
+import Checkbox from "@material-ui/core/Checkbox";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
+
+const useStyles = makeStyles(theme => ({
+  todoItemCompleted: {
+    textDecoration: "line-through"
+  }
+}));
 
 const TodoList = ({ todoItems, onItemToggled, onItemDeleted }) => {
+  const classes = useStyles();
   return (
-    <ul>
+    <List>
       {todoItems.map(todo => (
-        <li onClick={() => onItemToggled(todo.id)}>
-          {todo.text} - {todo.completed ? "Done!" : "Open"} -{" "}
-          <button onClick={() => onItemDeleted(todo.id)}>Delete</button>
-        </li>
+        <ListItem
+          key={todo.id}
+          dense
+          button
+          onClick={() => onItemToggled(todo.id)}
+        >
+          <ListItemIcon>
+            <Checkbox
+              edge="start"
+              checked={todo.completed}
+              tabIndex={-1}
+              disableRipple
+            />
+          </ListItemIcon>
+          <ListItemText
+            primary={todo.text}
+            className={todo.completed ? classes.todoItemCompleted : null}
+          />
+          <ListItemSecondaryAction>
+            <IconButton
+              edge="end"
+              aria-label="Delete"
+              onClick={() => onItemDeleted(todo.id)}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 };
 
