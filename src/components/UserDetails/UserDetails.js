@@ -37,7 +37,6 @@ const UserDetails = ({
 
   return (
     <div className={className}>
-      You are not currently logged in!
       <a
         href="#"
         className={classes.loginLink}

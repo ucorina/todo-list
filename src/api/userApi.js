@@ -16,7 +16,8 @@ export function login() {
           token,
           user: {
             email: user.email,
-            displayName: user.displayName
+            displayName: user.displayName,
+            uid: user.uid
           }
         });
       })

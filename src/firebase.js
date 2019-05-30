@@ -3,7 +3,7 @@ import * as firebase from "firebase/app";
 
 // Add the Firebase products that you want to use
 import "firebase/auth";
-import "firebase/firestore";
+import "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -17,5 +17,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+const databaseRef = firebase.database().ref();
+export const todosRef = databaseRef.child("todos");
 
 export default firebase;
