@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 
-import App from "./components/App";
+import App from "./pages/App";
 import store from "./store";
 
 ReactDOM.render(
