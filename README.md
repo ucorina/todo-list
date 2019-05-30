@@ -40,10 +40,10 @@ But put energy on using good HTML and CSS, it can be vanilla or pre-processed.
 - [x] Work on Chrome.
 
 ### Nice to have
-- [ ] Sign-in/Sign-out functionality using [Firebase Auth](https://firebase.google.com/docs/auth/);
-- [ ] Use **[Firebase Realtime Database](https://firebase.google.com/docs/database/)** linked to **Redux** to keep all the TO-DO's;
-- [ ] Optimistic response when dealing with firebase;
-- [ ] Host your working app on the *[Firebase Hosting environment](https://firebase.google.com/docs/hosting/)*;
+- [x] Sign-in/Sign-out functionality using [Firebase Auth](https://firebase.google.com/docs/auth/);
+- [x] Use **[Firebase Realtime Database](https://firebase.google.com/docs/database/)** linked to **Redux** to keep all the TO-DO's;
+- [x] Optimistic response when dealing with firebase;
+- [x] Host your working app on the *[Firebase Hosting environment](https://firebase.google.com/docs/hosting/)*;
 - [ ] Unit tests;
 - [ ] Aceptance tests;
 
